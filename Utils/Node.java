@@ -1,7 +1,7 @@
 package Utils;
 import java.util.*;
 public class Node {
-    // NOTE : the array must be 2D to be able to implement hashCode() so plz leave it
+    // NOTE : the array must be 1D to be able to implement hashCode() so plz leave it
     byte[] state;
     Node parent;
     private final int SIZE=9;
