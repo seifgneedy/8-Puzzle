@@ -6,7 +6,7 @@ public abstract class Algorithm {
     HashSet<Node> explored;
     Node goalNode;
     Algorithm(){
-        byte[] goalState={0,1,2,3,4,5,6,7,8};
+        int goalState= 12345678;
         goalNode=new Node(goalState);
         explored=new HashSet<>();
     }
