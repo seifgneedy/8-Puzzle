@@ -8,10 +8,9 @@ public class Node {
         state=0;
     }
     public Node(int state){
-    	if(!isValidState(state))
-    		System.out.println("Invalid State");
-    		
         this.state=state;
+    	if(!isValidState())
+    		System.out.println("Invalid State");
     }
     public Node(Node parent){
         this();
@@ -90,13 +89,9 @@ public class Node {
     			else
     				System.out.println();
     		}
-    		System.out.println("---------");
+    		//System.out.println("---------");
     	}
 		System.out.println("---------");
-		System.out.println("---------");
-
-    	    	
-    	
     }
     
     private void swap (int i, int j) {
@@ -124,7 +119,7 @@ public class Node {
 		this.state =result;
     	
     }
-    public boolean isValidState(int state) {
+    public boolean isValidState() {
     	Set<Integer> curr = new HashSet<Integer>();
     	String st = Integer.toString(state);
     	if(st.length() == 8) {
