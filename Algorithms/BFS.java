@@ -19,7 +19,7 @@ public class BFS extends Algorithm {
                 return true;
             }
             for(Node neighbor : state.neighbors()){
-                if(!frontier.contains(neighbor)&&!explored.contains(neighbor)) {
+                if(!explored.contains(neighbor) && !frontier.contains(neighbor)) {
                 	neighbor.setParent(state);
                     frontier.add(neighbor);
                 }

@@ -12,7 +12,7 @@ public abstract class Algorithm {
     }
 
     public List<Node> solve(Node initialState){
-        if(!search(initialState)){
+        if(!search(initialState)){		// first make sure state is valid and solvable (Later after testing)
             System.out.println("Failed to solve");
             return null;
         }
@@ -30,6 +30,8 @@ public abstract class Algorithm {
         }
         return path;
     }
+    
+    
     public boolean goalTest(Node state){
         return state.equals(goalNode);
     }

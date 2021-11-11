@@ -4,7 +4,7 @@ public class Node {
     // NOTE : the array must be 1D to be able to implement hashCode() so plz leave it --> NO
     int state;
     Node parent;
-    Node(){
+    private Node() {
         state=0;
     }
     public Node(int state){
@@ -31,6 +31,7 @@ public class Node {
     		if(curr[i] == 0)
     			zeroIndex = i;
     	}
+    	
     	if(zeroIndex/n != 0) {		//Can Go UP
     		Node neighbor = new Node(state);
     		neighbor.swap(zeroIndex, zeroIndex-n);
@@ -119,6 +120,25 @@ public class Node {
 		this.state =result;
     	
     }
+    
+    public boolean isSolvableState() {
+       	int [] curr = new int[3*3];
+    	String st = Integer.toString(state);
+    	if(st.length() != 9) {
+    		st = '0' + st;
+    	}
+    	for (int i = 0; i < st.length(); i++){
+    		curr[i] = st.charAt(i) - '0';
+    	}
+    	
+        int inversionCount = 0;
+        for (int i = 0; i < 9 - 1; i++)
+            for (int j = i+1; j < 9; j++)
+                 if (curr[i] > curr[j] && curr[i] > 0 && curr[j] > 0)
+                	 inversionCount++;
+    	return (inversionCount % 2 == 0);
+    }
+    
     public boolean isValidState() {
     	Set<Integer> curr = new HashSet<Integer>();
     	String st = Integer.toString(state);
@@ -137,4 +157,56 @@ public class Node {
     	
     	return true;
     }
+    
+    public int manhattanCost() {			//not properly tested
+    	int cost = 0;
+    	int [] curr = new int[3*3];
+    	String st = Integer.toString(state);
+    	if(st.length() != 9) {
+    		st = '0' + st;
+    	}
+    	for (int i = 0; i < st.length(); i++){
+    		curr[i] = st.charAt(i) - '0';
+    		if(curr[i] != i && curr[i] != 0)
+    			cost += manhattanPoint(i,curr[i]);
+    	}
+    	
+    	return cost;
+    }
+    	
+    private int manhattanPoint(int currentPos, int destination) {
+    	int x1 = currentPos / 3;
+    	int x2 = destination / 3;
+    	int y1 = currentPos % 3;
+    	int y2 = destination % 3;
+    		return Math.abs(x1 - x2) + Math.abs(y1 - y2);
+    }
+    
+    public double euclideanCost() {			//not tested at all
+    	double cost = 0;
+    	int [] curr = new int[3*3];
+    	String st = Integer.toString(state);
+    	if(st.length() != 9) {
+    		st = '0' + st;
+    	}
+    	for (int i = 0; i < st.length(); i++){
+    		curr[i] = st.charAt(i) - '0';
+    		if(curr[i] != i && curr[i] != 0)
+    			cost += euclideanPoint(i,curr[i]);
+    	}
+    	
+    	return cost;
+    }
+    
+    private double euclideanPoint(int currentPos, int destination) {
+    	int x1 = currentPos / 3;
+    	int x2 = destination / 3;
+    	int y1 = currentPos % 3;
+    	int y2 = destination % 3;
+    	return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+    }
+    
+    
+    	
+    	
 }
