@@ -7,7 +7,7 @@ import Algorithms.*;
 public class Test {
 
 	public static void main(String[] args) {
-		Node node = new Node(724506831);
+		Node node = new Node(125304678);
 		if(!node.isValidState()) {
 			System.out.println("Invalid Initial State");
 		}
@@ -16,7 +16,7 @@ public class Test {
 		}
 		System.out.println(node.manhattanCost());
 		
-		Algorithm m = new BFS();
+		Algorithm m = new A_stare();
 		List<Node> path = m.solve(node);
 		System.out.printf("Solved in %d Moves\n", path.size() - 1);
 		for(Node n : path)

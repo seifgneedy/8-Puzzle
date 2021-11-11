@@ -2,10 +2,13 @@ package Utils;
 import java.util.*;
 public class Node {
     // NOTE : the array must be 1D to be able to implement hashCode() so plz leave it --> NO
-    int state;
+	int state;
     Node parent;
-    private Node() {
+    double Totalcost;
+    int Cost=0;
+    Node(){
         state=0;
+        Cost=0;
     }
     public Node(int state){
         this.state=state;
@@ -59,12 +62,24 @@ public class Node {
     	return neighbors;
     }
     
-
+    public void setCost(int cost) {
+		this.Cost=cost;
+	}
+    public int getCost() {
+		return Cost;
+	}
     public Node getParent(){
         return parent;
     }
     public void setParent(Node parent){
         this.parent=parent;
+    }
+
+    public double getTotalcost() {
+    	return Totalcost;
+    }
+    public void setTotalcost(double total) {
+    	this.Totalcost=total;
     }
     @Override
     public int hashCode(){
