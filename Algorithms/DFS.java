@@ -11,7 +11,7 @@ public class DFS extends Algorithm {
         frontier=new Stack<>();
     }
     @Override
-    boolean search(Node initialState) {
+    boolean search(Node initialState, Result result) {
         frontier.push(initialState);
 
         while(!frontier.isEmpty()){
@@ -19,6 +19,7 @@ public class DFS extends Algorithm {
             explored.add(state);
             if(goalTest(state)){
                 getGoalNode().setParent(state.getParent());
+                result.setNodesExpanded(explored.size());
                 return true;
             }
             for(Node neighbor : state.neighbors()){
@@ -29,6 +30,7 @@ public class DFS extends Algorithm {
                 }
             }
         }
+        result.setNodesExpanded(explored.size());
         return false;
     }
     

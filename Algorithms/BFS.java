@@ -9,13 +9,14 @@ public class BFS extends Algorithm {
     }
 
     @Override
-    boolean search(Node initialState) {
+    boolean search(Node initialState, Result result) {
         frontier.add(initialState);
         while(!frontier.isEmpty()){
             Node state=frontier.poll();
             explored.add(state);
             if(goalTest(state)){
                 getGoalNode().setParent(state.getParent());
+                result.setNodesExpanded(explored.size());
                 return true;
             }
             for(Node neighbor : state.neighbors()){
@@ -25,6 +26,7 @@ public class BFS extends Algorithm {
                 }
             }
         }
+        result.setNodesExpanded(explored.size());
         return false;
     }
 

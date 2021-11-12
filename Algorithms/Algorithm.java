@@ -1,5 +1,6 @@
 package Algorithms;
 import Utils.Node;
+
 import java.util.*;
 
 public abstract class Algorithm {
@@ -11,15 +12,29 @@ public abstract class Algorithm {
         explored=new HashSet<>();
     }
 
-    public List<Node> solve(Node initialState){
-        if(!search(initialState)){		// first make sure state is valid and solvable (Later after testing)
-            System.out.println("Failed to solve");
-            return null;
-        }
-        return getPath();
+    public Result solve(Node initialState){
+    	if(!initialState.isValidState())
+    		System.out.println("Invalid Initial State");
+    	
+    	if(!initialState.isSolvableState())
+    		System.out.println("Unsolvable Initial State");
+    	
+        Result result = new Result();
+
+        long startTime = System.nanoTime();
+        
+        search(initialState, result);
+
+		long endTime = System.nanoTime();
+		long timeElapsed = (endTime - startTime);
+		
+        result.setTime(timeElapsed / 1000000);
+        result.setPath(getPath());
+        
+        return result;
     }
 
-    abstract boolean search(Node initialState);
+    abstract boolean search(Node initialState,Result result);
 
     List<Node> getPath(){
         LinkedList<Node> path=new LinkedList<>();

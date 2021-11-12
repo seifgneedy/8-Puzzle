@@ -7,16 +7,16 @@ import Utils.Node;
 
 
 
-public class A_stare  extends Algorithm {
+public class AStar  extends Algorithm {
 	PriorityQueue<Node> frontier;
 	Heuristic typeHeuristic;
-	public A_stare () {
+	public AStar () {
 		super();
 		typeHeuristic=Heuristic.H_Euclidean;
 		frontier=new PriorityQueue<Node>(10,new PriorityComparator());
 	}
 	@Override
-	boolean search(Node initialState) {
+	boolean search(Node initialState, Result result) {
 		 frontier.add(initialState);
 	        while(!frontier.isEmpty()){
 	            Node state=frontier.poll();
@@ -26,6 +26,7 @@ public class A_stare  extends Algorithm {
 	            explored.add(state);
 	            if(goalTest(state)){
 	                getGoalNode().setParent(state.getParent());
+	                result.setNodesExpanded(explored.size());
 	                return true;
 	            }
 	            for(Node neighbor : state.neighbors()){
@@ -56,6 +57,7 @@ public class A_stare  extends Algorithm {
 	                	
 	            }
 	        }
+	    result.setNodesExpanded(explored.size());
 		return false;
 	}
 

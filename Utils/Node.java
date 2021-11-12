@@ -92,22 +92,23 @@ public class Node {
         return this.state ==  ((Node) object).state;
     }
     
-    public void print() {
+    public String toString() {
     	String st = Integer.toString(state);
     	if(st.length() != 9) {
     		st = '0' + st;
     	}
+    	String s = "";
     	for(int i=0;i<3;i++) {
     		for(int j=3*i;j<3*i+3;j++) {
-    			System.out.print(st.charAt(j));
+    			s  += st.charAt(j);
     			if(j%3 != 2)
-        			System.out.print(" | ");
+    				s+= " | ";
     			else
-    				System.out.println();
+    				s+= "\n";
     		}
-    		//System.out.println("---------");
     	}
-		System.out.println("---------");
+    	s += "---------\n";
+		return s;
     }
     
     private void swap (int i, int j) {
