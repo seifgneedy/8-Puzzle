@@ -9,12 +9,17 @@ import Utils.Node;
 
 public class AStar  extends Algorithm {
 	PriorityQueue<Node> frontier;
-	Heuristic typeHeuristic;
-	public AStar () {
+	
+	public static final int Manhattan = 0;
+	public static final int Euclidean = 1;
+	int heuristic;
+	
+	public AStar(int heuristic) {
 		super();
-		typeHeuristic=Heuristic.H_Euclidean;
+		this.heuristic = heuristic;
 		frontier=new PriorityQueue<Node>(10,new PriorityComparator());
 	}
+	
 	@Override
 	boolean search(Node initialState, Result result) {
 		 frontier.add(initialState);
@@ -33,9 +38,9 @@ public class AStar  extends Algorithm {
 	                if(!explored.contains(neighbor)) {
 	                	neighbor.setParent(state);
 	                    neighbor.setCost(neighbor.getParent().getCost() +1);
-	                    if (typeHeuristic == Heuristic.H_Manhattan) {
+	                    if (heuristic == Manhattan) {
 	                    	neighbor.setTotalcost(neighbor.getCost()+neighbor.manhattanCost());
-	                    }else if(typeHeuristic == Heuristic.H_Euclidean) {
+	                    }else if(heuristic == Euclidean) {
 	                    	neighbor.setTotalcost(neighbor.getCost()+neighbor.euclideanCost());
 						}
 						Iterator<Node> iter = frontier.iterator();

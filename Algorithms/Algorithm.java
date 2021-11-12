@@ -13,11 +13,16 @@ public abstract class Algorithm {
     }
 
     public Result solve(Node initialState){
-    	if(!initialState.isValidState())
-    		System.out.println("Invalid Initial State");
+    	if(!initialState.isValidState()) {
+    		System.out.println("Invalid Initial State\nExiting");
+    		System.exit(-1);
+    	}
     	
-    	if(!initialState.isSolvableState())
-    		System.out.println("Unsolvable Initial State");
+    	if(!initialState.isSolvableState()) {
+    		System.out.println("Unsolvable Initial State\nExiting");
+			System.exit(-1);
+    	}
+
     	
         Result result = new Result();
 

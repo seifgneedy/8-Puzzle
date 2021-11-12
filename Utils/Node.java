@@ -1,7 +1,6 @@
 package Utils;
 import java.util.*;
 public class Node {
-    // NOTE : the array must be 1D to be able to implement hashCode() so plz leave it --> NO
 	int state;
     Node parent;
     double Totalcost;
@@ -92,6 +91,7 @@ public class Node {
         return this.state ==  ((Node) object).state;
     }
     
+    @Override
     public String toString() {
     	String st = Integer.toString(state);
     	if(st.length() != 9) {
@@ -100,9 +100,9 @@ public class Node {
     	String s = "";
     	for(int i=0;i<3;i++) {
     		for(int j=3*i;j<3*i+3;j++) {
-    			s  += st.charAt(j);
+    			s  += st.charAt(j) + " ";
     			if(j%3 != 2)
-    				s+= " | ";
+    				s+= "| ";
     			else
     				s+= "\n";
     		}
@@ -174,7 +174,7 @@ public class Node {
     	return true;
     }
     
-    public int manhattanCost() {			//not properly tested
+    public int manhattanCost() {
     	int cost = 0;
     	int [] curr = new int[3*3];
     	String st = Integer.toString(state);
@@ -198,7 +198,7 @@ public class Node {
     		return Math.abs(x1 - x2) + Math.abs(y1 - y2);
     }
     
-    public double euclideanCost() {			//not tested at all
+    public double euclideanCost() {
     	double cost = 0;
     	int [] curr = new int[3*3];
     	String st = Integer.toString(state);
@@ -221,8 +221,5 @@ public class Node {
     	int y2 = destination % 3;
     	return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     }
-    
-    
-    	
     	
 }
