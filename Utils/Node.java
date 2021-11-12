@@ -66,6 +66,14 @@ public class Node {
     public int getCost() {
 		return Cost;
 	}
+    
+    public void setState(int state) {
+		this.state=state;
+	}
+    public int getState() {
+		return state;
+	}
+    
     public Node getParent(){
         return parent;
     }

@@ -25,17 +25,17 @@ public class AStar  extends Algorithm {
 		 frontier.add(initialState);
 	        while(!frontier.isEmpty()){
 	            Node state=frontier.poll();
-	            if(explored.contains(state)) {
+	            if(explored.contains(state.getState())) {
 	            	continue;
 	            }
-	            explored.add(state);
+	            explored.add(state.getState());
 	            if(goalTest(state)){
 	                getGoalNode().setParent(state.getParent());
 	                result.setNodesExpanded(explored.size());
 	                return true;
 	            }
 	            for(Node neighbor : state.neighbors()){
-	                if(!explored.contains(neighbor)) {
+	                if(!explored.contains(neighbor.getState())) {
 	                	neighbor.setParent(state);
 	                    neighbor.setCost(neighbor.getParent().getCost() +1);
 	                    if (heuristic == Manhattan) {

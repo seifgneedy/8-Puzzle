@@ -4,12 +4,15 @@ import Utils.Node;
 import java.util.*;
 
 public abstract class Algorithm {
-    HashSet<Node> explored;
+    HashSet<Integer> explored;
+    HashSet<Integer> frontierSet;
+
     Node goalNode;
     Algorithm(){
         int goalState= 12345678;
         goalNode=new Node(goalState);
         explored=new HashSet<>();
+        frontierSet = new HashSet<>();
     }
 
     public Result solve(Node initialState){
@@ -18,10 +21,10 @@ public abstract class Algorithm {
     		System.exit(-1);
     	}
     	
-    	if(!initialState.isSolvableState()) {
-    		System.out.println("Unsolvable Initial State\nExiting");
-			System.exit(-1);
-    	}
+//    	if(!initialState.isSolvableState()) {
+//    		System.out.println("Unsolvable Initial State\nExiting");
+//			System.exit(-1);
+//    	}
 
     	
         Result result = new Result();
