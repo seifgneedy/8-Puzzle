@@ -6,9 +6,11 @@ import Utils.Node;
 
 public class DFS extends Algorithm {
     Stack<Node> frontier;
+    HashSet<Integer> frontierSet;
     public DFS(){
         super();
         frontier=new Stack<>();
+        frontierSet = new HashSet<>();
     }
     @Override
     boolean search(Node initialState, Result result) {

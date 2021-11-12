@@ -2,16 +2,18 @@ package Algorithms;
 import java.util.*;
 import Utils.*;
 public class BFS extends Algorithm {
+	HashSet<Integer> frontierSet;
     Queue<Node> frontier;
     public BFS(){
         super();
         frontier = new LinkedList<>();
+        frontierSet = new HashSet<>();
     }
 
     @Override
     boolean search(Node initialState, Result result) {
         frontier.add(initialState);
-        frontierSet.add(initialState.getState());
+		frontierSet.add(initialState.getState());
         while(!frontier.isEmpty()){
             Node state=frontier.poll();
             frontierSet.remove(state.getState());
