@@ -3,7 +3,12 @@ package Algorithms;
 import java.util.List;
 
 import Utils.Node;
-
+/**
+ * Class to store:
+ * 		The number of nodes expanded.
+ * 		The running time in milliseconds.
+ * 		The path to the goal state.
+ */
 public class Result {
 	private int nodesExpanded;
 	private long time;

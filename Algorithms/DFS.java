@@ -12,6 +12,17 @@ public class DFS extends Algorithm {
         frontier=new Stack<>();
         frontierSet = new HashSet<>();
     }
+    /**
+     * Search for the goal state using DFS algorithm.
+     * @param initialState
+     * starting state.
+     * @param result
+     * result object to store number of expanded 
+     * nodes in it.
+     * @return
+     * true if goal state is reached.
+     * false otherwise.
+     */
     @Override
     boolean search(Node initialState, Result result) {
         frontier.push(initialState);

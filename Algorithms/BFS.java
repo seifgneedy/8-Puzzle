@@ -9,7 +9,17 @@ public class BFS extends Algorithm {
         frontier = new LinkedList<>();
         frontierSet = new HashSet<>();
     }
-
+    /**
+     * Search for the goal state using BFS algorithm.
+     * @param initialState
+     * starting state.
+     * @param result
+     * result object to store number of expanded 
+     * nodes in it.
+     * @return
+     * true if goal state is reached.
+     * false otherwise.
+     */
     @Override
     boolean search(Node initialState, Result result) {
         frontier.add(initialState);

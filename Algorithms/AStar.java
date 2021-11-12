@@ -20,6 +20,17 @@ public class AStar  extends Algorithm {
 		frontier=new PriorityQueue<Node>(10,new PriorityComparator());
 		costs = new HashMap<Integer, Double>();
 	}
+	/**
+     * Search for the goal state using A* algorithm.
+     * @param initialState
+     * starting state.
+     * @param result
+     * result object to store number of expanded 
+     * nodes in it.
+     * @return
+     * true if goal state is reached.
+     * false otherwise.
+     */
 	@Override
 	boolean search(Node initialState, Result res) {
 		frontier.add(initialState);

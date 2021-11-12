@@ -1,13 +1,21 @@
 package Utils;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 import Algorithms.*;
-
+/**
+ * Main class to run the code in console
+ */
 public class Main {
-
-	public static void main(String[] args) throws Exception {
+	/**
+	 * Handle user input and run the right
+	 * algorithm according to user choice.
+	 * @param args
+	 * Not used.
+	 */
+	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		System.out.print("Enter initial state space or comma separated: ");
 		String s = in.nextLine();
@@ -41,18 +49,24 @@ public class Main {
 		System.out.printf("Solved in %d Moves\n", res.getCost());
 		System.out.printf("Solved in %d ms\n", res.getTime());
 		System.out.println("Nodes Expanded: " + res.getNodesExpanded());
-		System.out.println("Path Printed to path.txt");
-		
-		
+		System.out.println("Writing path ro file path.txt ...");
+		// steps is used in saving the path
 		String steps = "";
 		
 		for(Node n : res.getPath()) {
 			steps += n.toString();
 		}
-		FileWriter output = new FileWriter("path.txt");
-		output.write(steps);
-		output.flush();
-		output.close();
+		FileWriter output;
+		try {
+			output = new FileWriter("path.txt");
+			output.write(steps);
+			output.flush();
+			output.close();
+			System.out.println("Path is Printed to path.txt");
+		} catch (IOException e) {
+			System.out.println("Failed to save the path file.\n"
+					+ "The path is:\n" + steps);
+		}
 	}
 }
 
