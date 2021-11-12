@@ -19,10 +19,10 @@ public abstract class Algorithm {
     		System.exit(-1);
     	}
     	
-//    	if(!initialState.isSolvableState()) {
-//    		System.out.println("Unsolvable Initial State\nExiting");
-//			System.exit(-1);
-//    	}
+    	if(!initialState.isSolvableState()) {
+    		System.out.println("Unsolvable Initial State\nExiting");
+			System.exit(-1);
+    	}
 
     	
         Result result = new Result();

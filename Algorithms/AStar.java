@@ -48,7 +48,7 @@ public class AStar  extends Algorithm {
 					if(costs.containsKey(neighbor.getState())) {
 						if(neighbor.getTotalcost() < costs.get(neighbor.getState())) {
 							costs.put(neighbor.getState(), neighbor.getTotalcost());
-							//frontier.remove(neighbor);
+							frontier.remove(neighbor);
 						}else {
 							continue;
 						}
