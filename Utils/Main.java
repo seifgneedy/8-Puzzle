@@ -9,7 +9,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 		Scanner in = new Scanner(System.in);
-		System.out.println("Enter initial state space or comma separated: ");
+		System.out.print("Enter initial state space or comma separated: ");
 		String s = in.nextLine();
 		s = s.replaceAll(",", "");
 		s = s.replaceAll(" ", "");

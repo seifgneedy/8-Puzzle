@@ -11,8 +11,7 @@ public class Node {
     }
     public Node(int state){
         this.state=state;
-    	if(!isValidState())
-    		System.out.println("Invalid State");
+
     }
     public Node(Node parent){
         this();
