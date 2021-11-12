@@ -1,6 +1,5 @@
 package Algorithms;
 
-import java.util.Iterator;
 import java.util.PriorityQueue;
 
 import Utils.Node;
@@ -19,9 +18,8 @@ public class AStar  extends Algorithm {
 		this.heuristic = heuristic;
 		frontier=new PriorityQueue<Node>(10,new PriorityComparator());
 	}
-	
 	@Override
-	boolean search(Node initialState, Result result) {
+	boolean search(Node initialState, Result res) {
 		 frontier.add(initialState);
 	        while(!frontier.isEmpty()){
 	            Node state=frontier.poll();
@@ -31,7 +29,7 @@ public class AStar  extends Algorithm {
 	            explored.add(state.getState());
 	            if(goalTest(state)){
 	                getGoalNode().setParent(state.getParent());
-	                result.setNodesExpanded(explored.size());
+	                res.setNodesExpanded(explored.size());
 	                return true;
 	            }
 	            for(Node neighbor : state.neighbors()){
@@ -43,27 +41,13 @@ public class AStar  extends Algorithm {
 	                    }else if(heuristic == Euclidean) {
 	                    	neighbor.setTotalcost(neighbor.getCost()+neighbor.euclideanCost());
 						}
-						Iterator<Node> iter = frontier.iterator();
-						Node iterNode;
-						boolean addToFontier = true;
-						while(iter.hasNext()){
-							iterNode = iter.next();
-							if(iterNode.equals(neighbor)){
-								if(iterNode.getTotalcost() > neighbor.getTotalcost()){
-									frontier.remove(iterNode);
-								}else
-									addToFontier = false;
-								break;
-							}
-						}
-						if(addToFontier)
-							frontier.add(neighbor);
+	                    frontier.add(neighbor);
 	                }
-	                	
+	                
 	            }
 	        }
-	    result.setNodesExpanded(explored.size());
-		return false;
+	        res.setNodesExpanded(explored.size());
+	        return false;
 	}
 
    
