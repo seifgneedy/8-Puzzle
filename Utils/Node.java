@@ -23,7 +23,7 @@ public class Node {
     	int n = 3;
     	int [] curr = new int[3*3];
     	int zeroIndex = -1;
-    	ArrayList<Node>  neighbors = new ArrayList<Node>();
+    	LinkedList<Node>  neighbors = new LinkedList<Node>();
     	String st = Integer.toString(state);
     	if(st.length() != 9) {
     		st = '0' + st;
