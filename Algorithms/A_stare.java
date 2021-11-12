@@ -1,5 +1,6 @@
 package Algorithms;
 
+import java.util.Iterator;
 import java.util.PriorityQueue;
 
 import Utils.Node;
@@ -16,7 +17,6 @@ public class A_stare  extends Algorithm {
 	}
 	@Override
 	boolean search(Node initialState) {
-		// TODO Auto-generated method stub
 		 frontier.add(initialState);
 	        while(!frontier.isEmpty()){
 	            Node state=frontier.poll();
@@ -37,7 +37,21 @@ public class A_stare  extends Algorithm {
 	                    }else if(typeHeuristic == Heuristic.H_Euclidean) {
 	                    	neighbor.setTotalcost(neighbor.getCost()+neighbor.euclideanCost());
 						}
-	                    frontier.add(neighbor);
+						Iterator<Node> iter = frontier.iterator();
+						Node iterNode;
+						boolean addToFontier = true;
+						while(iter.hasNext()){
+							iterNode = iter.next();
+							if(iterNode.equals(neighbor)){
+								if(iterNode.getTotalcost() > neighbor.getTotalcost()){
+									frontier.remove(iterNode);
+								}else
+									addToFontier = false;
+								break;
+							}
+						}
+						if(addToFontier)
+							frontier.add(neighbor);
 	                }
 	                	
 	            }

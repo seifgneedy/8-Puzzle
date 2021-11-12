@@ -7,7 +7,9 @@ import Algorithms.*;
 public class Test {
 
 	public static void main(String[] args) {
-		Node node = new Node(125304678);
+		//125304678
+		//432650781
+		Node node = new Node(724506831);
 		if(!node.isValidState()) {
 			System.out.println("Invalid Initial State");
 		}
