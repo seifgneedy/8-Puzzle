@@ -5,14 +5,12 @@ import java.util.*;
 
 public abstract class Algorithm {
     HashSet<Integer> explored;
-    HashSet<Integer> frontierSet;
 
     Node goalNode;
     Algorithm(){
         int goalState= 12345678;
         goalNode=new Node(goalState);
         explored=new HashSet<>();
-        frontierSet = new HashSet<>();
     }
 
     public Result solve(Node initialState){
